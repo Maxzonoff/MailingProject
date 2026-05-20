@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Пользователи — Менеджер{% endblock %}
+{% block content %}
+<div class="card">
+    <h2>Пользователи сервиса</h2>
+    <table>
+        <thead><tr><th>ID</th><th>Имя</th><th>Email</th><th>Активен</th><th>Staff</th></tr></thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{% if user.is_active %}✅{% else %}❌{% endif %}</td>
+                <td>{% if user.is_staff %}✅{% else %}❌{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

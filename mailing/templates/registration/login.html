@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Вход — Сервис рассылок{% endblock %}
+
+{% block content %}
+<div class="card" style="max-width: 400px; margin: 0 auto;">
+    <h2>Вход в систему</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="id_username">Имя пользователя:</label>
+            <input type="text" name="username" id="id_username" class="form-control" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="id_password">Пароль:</label>
+            <input type="password" name="password" id="id_password" class="form-control" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%;">Войти</button>
+    </form>
+    
+    <p style="text-align: center; margin-top: 15px;">
+        Нет аккаунта? <a href="{% url 'mailing:register' %}">Зарегистрироваться</a>
+    </p>
+</div>
+{% endblock %}

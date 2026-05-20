@@ -1,0 +1,25 @@
+[project]
+name = "mailingproject"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "MaxZ",email = "maxzonoff@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "black (>=26.3.1,<27.0.0)",
+    "mypy (>=1.20.2,<2.0.0)",
+    "isort (>=8.0.1,<9.0.0)",
+    "flake8 (>=7.3.0,<8.0.0)",
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "psycopg2-binary (>=2.9.12,<3.0.0)",
+    "pillow (>=12.2.0,<13.0.0)",
+    "django (>=6.0.5,<7.0.0)",
+    "redis (>=7.4.0,<8.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

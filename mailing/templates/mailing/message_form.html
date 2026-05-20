@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if object %}Редактирование{% else %}Создание{% endif %} сообщения
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>
+        {% if object %}
+            Редактировать сообщение
+        {% else %}
+            Новое сообщение
+        {% endif %}
+    </h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_subject">Тема письма:</label>
+            {{ form.subject }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_text">Текст письма:</label>
+            {{ form.text }}
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            {% if object %}Сохранить{% else %}Создать{% endif %}
+        </button>
+        <a href="{% url 'mailing:message_list' %}" class="btn">Отмена</a>
+    </form>
+</div>
+{% endblock %}

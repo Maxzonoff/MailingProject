@@ -1,0 +1,11 @@
+<<nav>
+    <div class="container">
+        <a href="{% url 'mailing:home' %}">🏠 Главная</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'mailing:mailing_recipient_list' %}">👥 Получатели</a>
+            <a href="{% url 'mailing:message_list' %}">✉️ Сообщения</a>
+            <a href="{% url 'mailing:mailing_list' %}">📨 Рассылки</a>
+            <a href="{% url 'mailing:attempt_list' %}">📊 Статистика</a>
+        {% endif %}
+    </div>
+</nav>

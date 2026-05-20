@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if object %}Редактирование{% else %}Создание{% endif %} получателя
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>
+        {% if object %}
+            Редактировать получателя: {{ object.full_name }}
+        {% else %}
+            Новый получатель
+        {% endif %}
+    </h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_full_name">Ф.И.О.:</label>
+            {{ form.full_name }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_comment">Комментарий:</label>
+            {{ form.comment }}
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            {% if object %}Сохранить{% else %}Создать{% endif %}
+        </button>
+        <a href="{% url 'mailing:mailing_recipient_list' %}" class="btn">Отмена</a>
+    </form>
+</div>
+{% endblock %}

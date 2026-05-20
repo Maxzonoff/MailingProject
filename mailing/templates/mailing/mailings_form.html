@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if object %}Редактирование{% else %}Создание{% endif %} рассылки
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>
+        {% if object %}
+            Редактировать рассылку #{{ object.id }}
+        {% else %}
+            Новая рассылка
+        {% endif %}
+    </h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_start_time">Дата и время начала:</label>
+            {{ form.start_time }}
+            <small>Формат: ГГГГ-ММ-ДД ЧЧ:ММ</small>
+        </div>
+
+        <div class="form-group">
+            <label for="id_end_time">Дата и время окончания:</label>
+            {{ form.end_time }}
+            <small>Формат: ГГГГ-ММ-ДД ЧЧ:ММ</small>
+        </div>
+
+        <div class="form-group">
+            <label for="id_message">Сообщение:</label>
+            {{ form.message }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_recipients">Получатели:</label>
+            {{ form.recipients }}
+            <small>Удерживайте Ctrl для выбора нескольких</small>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            {% if object %}Сохранить{% else %}Создать{% endif %}
+        </button>
+        <a href="{% url 'mailing:mailing_list' %}" class="btn">Отмена</a>
+    </form>
+</div>
+{% endblock %}
